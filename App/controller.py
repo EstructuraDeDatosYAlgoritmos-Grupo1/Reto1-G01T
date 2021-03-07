@@ -70,6 +70,8 @@ def loadCategories(catalog):
     input_file = csv.DictReader(open(categoryfile, encoding='utf-8'), delimiter='\t')
     for category in input_file:
         model.addCategory(catalog, category)
+
+
         
 # Funciones de ordenamiento
 

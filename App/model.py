@@ -51,9 +51,10 @@ def createCatalogArray():
     generos y libros. Retorna el catalogo inicializado.
     """
     catalog = {'videos': None,
-               'categories': None}
+               'categories': None,}
     catalog['videos']= lt.newList(datastructure='ARRAY_LIST')
     catalog['categories'] = lt.newList(datastructure='ARRAY_LIST')
+
     
     return catalog
 
@@ -65,9 +66,10 @@ def createCatalogSingleLinked():
     generos y libros. Retorna el catalogo inicializado.
     """
     catalog = {'videos': None,
-               'categories': None}
+               'categories': None, 'countries':None}
     catalog['videos']= lt.newList(datastructure='SINGLE_LINKED')
     catalog['categories'] = lt.newList(datastructure='SINGLE_LINKED')
+    catalog['countries']=lt.newList(datastructure='ARRAY_LIST')
     return catalog
 
 # Funciones para agregar informacion al catalogo
@@ -75,17 +77,20 @@ def createCatalogSingleLinked():
 def addVideo(catalog, video):
     lt.addLast(catalog['videos'], video)
     
-# Funciones para creacion de datos
 
 def addCategory(catalog, category):
     t = newCategory(category['id'], category['name'])
     lt.addLast(catalog['categories'], t)
+
+
 
 # Funciones para creacion de datos
 
 def newCategory(category_id,name):
     category = {'id': category_id, 'name': name}
     return category
+
+
 
 # Funciones de consulta
 
@@ -103,6 +108,8 @@ def cmpVideosByViews(video1, video2):
     elif video1['views'] < video2['views']:
         return -1
     return 0
+
+
     
 
 # Funciones de ordenamiento
@@ -146,3 +153,5 @@ def quickSortVideos(catalog,size):
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time - start_time)*1000
     return elapsed_time_mseg, sorted_list
+
+def sortVideos(catalog)

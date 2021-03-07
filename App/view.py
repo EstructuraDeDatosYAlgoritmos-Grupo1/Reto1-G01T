@@ -114,8 +114,11 @@ while True:
             print("Para la muestra de", size, " elementos, el tiempo (mseg) es: ", str(result[0]))
         else:
             print('Ingrese una opcion valida')
+    elif  int(inputs[0]) == 3:
+        n = input("Ingrese el número de videos con más views que desea encontrar: ")
+        pais = input("Ingrese el pais sobre el cual quiere encontrar los mejores videos: ")
+        categ = input("Ingrese la categoria de videos que desea consultar: ")
         
-
     else:
         sys.exit(0)
 sys.exit(0)
