@@ -23,6 +23,7 @@
 import config as cf
 import model
 import csv
+from DISClib.ADT import list as lt
 
 
 """
@@ -106,3 +107,14 @@ def quickSortVideoscatalog(catalog,size):
     return model.quickSortVideos(catalog,size)
 
 # Funciones de consulta sobre el catálogo
+
+def VideosByCountyCategoryViews(catalog,numberVideos,bestCountry,bestCategory):
+    sortedVideos1 = mergeSortVideoscatalog(catalog,len(catalog["videos"]))
+    sortedVideos = sortedVideos1[1]
+    topnVideos = initCatalogArray()
+    position = 0
+    while len(topnVideos["videos"])<= numberVideos:
+        element = lt.getElement(sortedVideos['videos'],position)
+        if (element["country"] == bestCountry and element["category_id"]==bestCategory):
+            lt.addFirst(topnVideos,element)
+        position += 1

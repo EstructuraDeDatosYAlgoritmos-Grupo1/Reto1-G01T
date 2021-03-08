@@ -115,9 +115,10 @@ while True:
         else:
             print('Ingrese una opcion valida')
     elif  int(inputs[0]) == 3:
-        n = input("Ingrese el número de videos con más views que desea encontrar: ")
-        pais = input("Ingrese el pais sobre el cual quiere encontrar los mejores videos: ")
-        categ = input("Ingrese la categoria de videos que desea consultar: ")
+        numberVideos = input("Ingrese el número de videos con más views que desea encontrar: ")
+        bestCountry = input("Ingrese el pais sobre el cual quiere encontrar los mejores videos: ")
+        bestCategory = input("Ingrese la categoria de videos que desea consultar: ")
+        
         
     else:
         sys.exit(0)

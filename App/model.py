@@ -100,13 +100,12 @@ def cmpVideosByViews(video1, video2):
     Args:
     video1: informacion del primer video que incluye su valor 'views'
     video2: informacion del segundo video que incluye su valor 'views'
-    Tiene que devolver 1 /0 /-1
+    
     """
-    if video1['views'] > video2['views']:
-        return 1
-    elif video1['views'] < video2['views']:
-        return -1
-    return 0
+    if video1['views'] < video2['views']:
+        return True
+    elif video1['views'] >= video2['views']:
+        return False
 
 
     
@@ -153,4 +152,4 @@ def quickSortVideos(catalog,size):
     elapsed_time_mseg = (stop_time - start_time)*1000
     return elapsed_time_mseg, sorted_list
 
-def sortVideos(catalog)
+
