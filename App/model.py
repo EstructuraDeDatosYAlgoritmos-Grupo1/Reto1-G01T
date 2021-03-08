@@ -66,10 +66,9 @@ def createCatalogSingleLinked():
     generos y libros. Retorna el catalogo inicializado.
     """
     catalog = {'videos': None,
-               'categories': None, 'countries':None}
+               'categories': None}
     catalog['videos']= lt.newList(datastructure='SINGLE_LINKED')
     catalog['categories'] = lt.newList(datastructure='SINGLE_LINKED')
-    catalog['countries']=lt.newList(datastructure='ARRAY_LIST')
     return catalog
 
 # Funciones para agregar informacion al catalogo
