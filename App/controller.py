@@ -58,7 +58,7 @@ def loadVideos(catalog):
     """
     Carga los videos del archivo. 
     """
-    videosfile =  'Reto1-G01T\Data\\videos\\videos-large.csv'
+    videosfile =  cf.data_dir + 'videos/videos-large.csv'
     input_file = csv.DictReader(open(videosfile, encoding='utf-8'))
     for video in input_file:
         model.addVideo(catalog, video)
@@ -67,7 +67,7 @@ def loadCategories(catalog):
     """
     Carga los videos del archivo. 
     """
-    categoryfile = "Reto1-G01T\Data\\videos\category-id.csv"
+    categoryfile = cf.data_dir + 'videos/category-id.csv'
     input_file = csv.DictReader(open(categoryfile, encoding='utf-8'), delimiter='\t')
     for category in input_file:
         model.addCategory(catalog, category)
@@ -108,13 +108,15 @@ def quickSortVideoscatalog(catalog,size):
 
 # Funciones de consulta sobre el catálogo
 
-def VideosByCountyCategoryViews(catalog,numberVideos,bestCountry,bestCategory):
-    sortedVideos1 = mergeSortVideoscatalog(catalog,len(catalog["videos"]))
-    sortedVideos = sortedVideos1[1]
-    topnVideos = initCatalogArray()
-    position = 0
-    while len(topnVideos["videos"])<= numberVideos:
-        element = lt.getElement(sortedVideos['videos'],position)
-        if (element["country"] == bestCountry and element["category_id"]==bestCategory):
-            lt.addFirst(topnVideos,element)
-        position += 1
+def topnVideosCCV(catalog, bestCountry,bestCategory, numberVideos):
+    bestCategoryid = model.findCategoryid(catalog,bestCategory)
+    sortedCatalog = model.catalogSortedByViewsCountyCategory(catalog,bestCountry,bestCategoryid)
+    topnVideosCCV = model.topnVideosByViews(sortedCatalog,numberVideos)
+    return topnVideosCCV
+
+
+
+
+
+
+

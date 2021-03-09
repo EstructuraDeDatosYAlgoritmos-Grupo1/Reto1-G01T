@@ -44,12 +44,7 @@ los mismos.
 
 # Construccion de modelos
 def createCatalogArray():
-    """
-    Inicializa el catálogo de videos. Crea una lista vacia para guardar
-    todos los videos, adicionalmente, crea una lista vacia para los autores,
-    una lista vacia para los generos y una lista vacia para la asociación
-    generos y libros. Retorna el catalogo inicializado.
-    """
+    
     catalog = {'videos': None,
                'categories': None,}
     catalog['videos']= lt.newList(datastructure='ARRAY_LIST')
@@ -59,12 +54,7 @@ def createCatalogArray():
     return catalog
 
 def createCatalogSingleLinked():
-    """
-    Inicializa el catálogo de videos. Crea una lista vacia para guardar
-    todos los videos, adicionalmente, crea una lista vacia para los autores,
-    una lista vacia para los generos y una lista vacia para la asociación
-    generos y libros. Retorna el catalogo inicializado.
-    """
+    
     catalog = {'videos': None,
                'categories': None}
     catalog['videos']= lt.newList(datastructure='SINGLE_LINKED')
@@ -91,7 +81,31 @@ def newCategory(category_id,name):
 
 
 
+
 # Funciones de consulta
+
+
+def findCategoryid(catalog,category):
+    for pos in range(len(catalog["categories"])):
+        if lt.getElement(catalog["categories"],pos) == category:
+            return lt.getElement(catalog["categories"],pos)["id"]
+
+
+def catalogCountryCategory(catalog,bestCountry,bestCategoryid):
+    topnVideos = lt.newList(datastructure='ARRAY_LIST')
+    for position in range(0,len(catalog["videos"])):
+        element = lt.getElement(catalog['videos'],position)
+        if (element["country"] == bestCountry and element["category_id"]==bestCategoryid):
+            lt.addLast(topnVideos,element)
+    return topnVideos
+
+def topnVideosByViews(sortedVideos,numberVideos):
+    topnVideos = lt.newList(datastructure='ARRAY_LIST')
+    position = 0
+    while position <= numberVideos:
+        lt.addLast(topnVideos,lt.getElement(sortedVideos,position))
+        position += 1
+    return topnVideos
 
 # Funciones utilizadas para comparar elementos dentro de una lista
 
@@ -106,6 +120,7 @@ def cmpVideosByViews(video1, video2):
         return True
     elif video1['views'] >= video2['views']:
         return False
+
 
 
     
@@ -153,3 +168,7 @@ def quickSortVideos(catalog,size):
     return elapsed_time_mseg, sorted_list
 
 
+def catalogSortedByViewsCountyCategory(catalog,bestCountry,bestCategoryid):
+    videosCC =catalogCountryCategory(catalog,bestCountry,bestCategoryid)
+    sortedVideos = merge.sort(videosCC,cmpVideosByViews)
+    return sortedVideos

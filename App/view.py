@@ -115,10 +115,11 @@ while True:
         else:
             print('Ingrese una opcion valida')
     elif  int(inputs[0]) == 3:
-        numberVideos = input("Ingrese el número de videos con más views que desea encontrar: ")
-        bestCountry = input("Ingrese el pais sobre el cual quiere encontrar los mejores videos: ")
+        numberVideos = int(input("Ingrese el número de videos con más views que desea encontrar: "))
+        bestCountry = input("Ingrese el pais sobre el cual quiere encontrar los mejores videos: ").lower()
         bestCategory = input("Ingrese la categoria de videos que desea consultar: ")
-        
+        result = controller.topnVideosCCV(catalog, bestCountry,bestCategory, numberVideos)
+        print("Estos son el top " + str(numberVideos)+ " videos encontrados para el pais y la categoria: ", str(result))
         
     else:
         sys.exit(0)
