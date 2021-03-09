@@ -119,7 +119,7 @@ while True:
         bestCountry = input("Ingrese el pais sobre el cual quiere encontrar los mejores videos: ").lower()
         bestCategory = input("Ingrese la categoria de videos que desea consultar: ")
         result = controller.topnVideosCCV(catalog, bestCountry,bestCategory, numberVideos)
-        print("Estos son el top " + str(numberVideos)+ " videos encontrados para el pais y la categoria: ", str(result))
+        print("Estos son el top " + str(numberVideos)+ " videos encontrados para el pais y la categoria: ", result)
         
     else:
         sys.exit(0)

@@ -86,14 +86,14 @@ def newCategory(category_id,name):
 
 
 def findCategoryid(catalog,category):
-    for pos in range(len(catalog["categories"])):
+    for pos in range(1,lt.size(catalog["categories"])+1):
         if lt.getElement(catalog["categories"],pos) == category:
             return lt.getElement(catalog["categories"],pos)["id"]
 
 
 def catalogCountryCategory(catalog,bestCountry,bestCategoryid):
     topnVideos = lt.newList(datastructure='ARRAY_LIST')
-    for position in range(0,len(catalog["videos"])):
+    for position in range(1,lt.size(catalog["videos"])+1):
         element = lt.getElement(catalog['videos'],position)
         if (element["country"] == bestCountry and element["category_id"]==bestCategoryid):
             lt.addLast(topnVideos,element)
